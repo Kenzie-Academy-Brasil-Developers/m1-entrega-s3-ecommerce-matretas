@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+html,
+body,
+figure,
+div,
+input,
+textarea,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  list-style: none;
+}
+
+figcaption {
+  display: none;
+}
+
+.topo {
+    background: #F5F5F5;
+    height: 50px;
+}
+
+.topo .conteudo {
+    height: 50px;
+    margin: 0 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.topo .conteudo h1 {
+    font-size: 24px;
+}
+
+.topo .conteudo nav ul li {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0 8px;
+}
+
+.topo .conteudo nav ul li a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #828282;
+}
+
+.topo .conteudo nav ul li #todos {
+    color: #333333;
+}
+
+.topo .conteudo nav ul li a:hover {
+    color: #333333;
+}
+
+.principal .sectionBox {
+    display: flex;
+    margin: 20px 75px;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+
+.principal .sectionBox .cardsBox {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    flex-wrap: wrap;
+    width: 72%;
+    height: 670px;
+    background: transparent;
+}
+
+.principal .sectionBox .cardsBox .cards {
+    width: 32%;
+    height: 325px;
+    background: #F5F5F5;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    padding-bottom: 4px;
+    box-shadow: 0px 0px 12px 6px transparent(0,0,0,0.75);
+}
+
+.principal .sectionBox .cardsBox .cards:hover {
+    box-shadow: 0px 0px 6px 3px rgba(0,0,0,0.75);
+}
+
+.principal .sectionBox .cardsBox .cards .cardHeader {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    background: #F5F5F5;
+}
+
+.principal .sectionBox .cardsBox .cards img {
+    height: 100%;
+}
+
+.principal .sectionBox .cardsBox .cards .cardBody {
+    width: 92%;
+    height: 60%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 15px;
+}
+
+.principal .sectionBox .cardsBox .cards .cardBody button {
+    width: 70px;
+    height: 20px;
+    border: none;
+    background: #2E245E;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.principal .sectionBox .cardsBox .cards .cardBody h3 {
+    color: #333333;
+    font-size: 16px;
+}
+
+.principal .sectionBox .cardsBox .cards .cardBody p {
+    font-size: 12px;
+    color: #828282;
+}
+
+.principal .sectionBox .cardsBox .cards .cardBody span {
+    font-size: 12px;
+    color:#2E245E;
+}
+
+.principal .sectionBox .cardsBox .cards .cardBody span a {
+    color: #828282;
+    font-size: 14px;
+}
+
+.principal .sectionBox .cardsBox .cards .cardBody span a:hover {
+    color: #6B54DE;
+}
+
+.principal .sectionBox .cartBox {
+    width: 26%;
+    background: transparent;
+    
+}
+
+.principal .sectionBox .cartBox .searchArea input {
+    width: 68%;
+    height: 40px;
+    padding-left: 15px;
+    background: #F5F5F5;
+    color: #828282;
+}
+
+.principal .sectionBox .cartBox .searchArea button {
+    width: 30%;
+    height: 40px;
+    background: #6B54DE;
+    font-weight: 900px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.principal .sectionBox .cartBox .cartBody .rectangle {
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #6B54DE;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner {
+    width: 100%;
+    height: 320px;
+    background: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner h3 {
+    font-size: 22px;
+    color: #333333;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner span {
+    font-size: 14px;
+    color: #828282;
+}
