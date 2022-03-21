@@ -80,7 +80,7 @@ figcaption {
     flex-wrap: wrap;
     width: 780px;
     height: 60%;
-    background: lightblue;
+    background: transparent;
 }
 
 .principal .sectionBox .cardsBox .cards {
@@ -162,7 +162,7 @@ figcaption {
 .principal .sectionBox .cartBox {
     width: 325px;
     height: 40%;
-    background: purple;
+    background: transparent;
     
 }
 
