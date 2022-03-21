@@ -7,14 +7,14 @@ div,
 input,
 textarea,
 p,
-h1,
+/* h1, */
 h2,
-h3,
+/* h3, */
 h4,
 h5,
 h6,
 ul {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: none;
   box-sizing: border-box;
@@ -27,15 +27,16 @@ figcaption {
 }
 
 .topo {
-    background: #F5F5F5;
-    height: 50px;
+    height: 100px;
 }
 
 .topo .conteudo {
+    background: #F5F5F5;
     height: 50px;
-    margin: 0 75px;
+    padding: 0 75px;
     display: flex;
     justify-content: space-between;
+    flex-flow: wrap;
     align-items: center;
     
 }
@@ -69,27 +70,29 @@ figcaption {
     margin: 20px 75px;
     justify-content: space-between;
     flex-flow: wrap;
+    
 }
 
 .principal .sectionBox .cardsBox {
     display: flex;
     justify-content: space-between;
-    align-content: space-between;
+    align-content: center;
     flex-wrap: wrap;
-    width: 72%;
-    height: 670px;
-    background: transparent;
+    width: 780px;
+    height: 60%;
+    background: lightblue;
 }
 
 .principal .sectionBox .cardsBox .cards {
-    width: 32%;
+    width: 245px;
     height: 325px;
     background: #F5F5F5;
     display: flex;
     flex-flow: wrap;
     justify-content: center;
     padding-bottom: 4px;
-    box-shadow: 0px 0px 12px 6px transparent(0,0,0,0.75);
+    box-shadow: 0px 0px 6px 3px transparent(0,0,0,0.75);
+    margin: 0 0 20px 0;
 }
 
 .principal .sectionBox .cardsBox .cards:hover {
@@ -115,7 +118,8 @@ figcaption {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding-left: 15px;
+    /* align-content:flex-start */
+    padding-left: 12px;
 }
 
 .principal .sectionBox .cardsBox .cards .cardBody button {
@@ -129,6 +133,7 @@ figcaption {
 }
 
 .principal .sectionBox .cardsBox .cards .cardBody h3 {
+    margin: 0;
     color: #333333;
     font-size: 16px;
 }
@@ -139,11 +144,13 @@ figcaption {
 }
 
 .principal .sectionBox .cardsBox .cards .cardBody span {
-    font-size: 12px;
+    font-weight: bold;
+    font-size: 14px;
     color:#2E245E;
 }
 
 .principal .sectionBox .cardsBox .cards .cardBody span a {
+    font-weight: normal;
     color: #828282;
     font-size: 14px;
 }
@@ -153,8 +160,9 @@ figcaption {
 }
 
 .principal .sectionBox .cartBox {
-    width: 26%;
-    background: transparent;
+    width: 325px;
+    height: 40%;
+    background: purple;
     
 }
 
@@ -167,14 +175,14 @@ figcaption {
 }
 
 .principal .sectionBox .cartBox .searchArea button {
-    width: 30%;
+    width: 29%;
     height: 40px;
     background: #6B54DE;
     font-weight: 900px;
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 95%;
 }
 
 .principal .sectionBox .cartBox .cartBody .rectangle {
