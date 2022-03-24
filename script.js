@@ -1,70 +1,11 @@
-const cardsInfo = [
-    {
-        id: 1,
-        imgSrc: "./Men-Jacket-Front-Black__15466 1.png",
-        imgAlt: "Jaqueta Preta Masculina Vista Frontal",
-        figCaption: "Jaqueta Preta Masculina Vista Frontal",
-        button: "Camisetas",
-        nome: "Lightweight Jacket",
-        descricao: "Adicione um pouco de energia ao seu guarda-roupa de inverno com esta jaqueta vibrante...",
-        preco: "R$ 100.00"
-    }, 
-    {        
-        id: 2,
-        imgSrc: "./image 1.png",
-        imgAlt: "Gorro Preto",
-        figCaption: "Gorro Preto",
-        button: "Acessórios",
-        nome: "Black Hat",
-        descricao: "O gorro Next.js chegou! Esta beldade bordada tem um ajuste confortável que garante que...",
-        preco: "R$ 100.00"
-    }, 
-    {                
-        id: 3,
-        imgSrc: "./Surgical-Mask-Black__89554 1.png",
-        imgAlt: "Máscara Cirúrgica",
-        figCaption: "Máscara Cirúrgica",
-        button: "Acessórios",
-        nome: "Mask",
-        descricao: "Esta máscara facial durável é feita de duas camadas de tecido tratado e possui presilhas...",
-        preco: "R$ 40.00"
-    }, 
-    {
-        id: 4,
-        imgSrc: "./Men-TShirt-Black-Front__70046 1.png",
-        imgAlt: "Camiseta Masculina Preta",
-        figCaption: "Camiseta Masculina Preta",
-        button: "Camisetas",
-        nome: "T-Shirt",
-        descricao: "Esta t-shirt é imprescindível no seu guarda-roupa, combinando o caimento intemporal de...",
-        preco: "R$ 100.00"
-    }, 
-    {
-        id: 5,
-        imgSrc: "./mockup-a0dc2330__62146 1.png",
-        imgAlt: "Camiseta Masculina Branca",
-        figCaption: "Camiseta Masculina Branca",
-        button: "Camisetas",
-        nome: "Short-Sleeve T-Shirt",
-        descricao: "Agora você encontrou a camiseta básica do seu guarda-roupa. É feito de um mais grosso...",
-        preco: "R$ 100.00"
-    }, 
-    {
-        id: 6,
-        imgSrc: "./mockup-9b9894f1__67347 1.png",
-        imgAlt: "Jaqueta Embalável Preta",
-        figCaption: "Jaqueta Embalável Preta",
-        button: "Camisetas",
-        nome: "Champion Packable Jacket",
-        descricao: "Proteja-se dos elementos com esta jaqueta embalável Champion. Esta jaqueta de poliést...",
-        preco: "R$ 100.00"
-    }
-];
-
 const cardsBox = document.querySelector(".cardsBox");
 
-function addCards(a) {
+const cartInner = document.querySelector(".cartInner");       
 
+const cart = [];
+
+function addCards(a) {
+    
     for(let i = 0; i < a.length; i++) {
 
         const div = document.createElement("div");
@@ -121,23 +62,384 @@ function addCards(a) {
 
         const preco  = document.createElement("span");
 
-        preco.innerText = a[i].preco;
+        preco.innerText = `R$ ${a[i].preco}.00`;
 
         article.appendChild(preco);
 
-        const addCart = document.createElement("span");
+        const addCart = document.createElement("button");
+
+        addCart.classList.add("addToCart");
+        
+        addCart.innerText = "Adicionar ao Carrinho";
 
         article.appendChild(addCart);
 
-        const link = document.createElement("a");
+        addCart.addEventListener("click", (e) => {
 
-        link.href = "#";
+            let inCart = undefined;
 
-        link.innerText = "Adcionar ao Carrihno";
+            for(let i = 0; i < cart.length; i++) {
 
-        addCart.appendChild(link)
+                if (cart[i].id === Number(e.path[2].id)) {
 
+                    inCart = cart[i];
+                };
+            };
+
+            if (inCart) {
+
+                inCart["quantity"]++;
+
+            } else {
+
+                let item = undefined;
+
+                for(let i = 0; i < cardsInfos.length; i++) {
+
+                    if (cardsInfos[i].id === Number(e.path[2].id)) {
+
+                        item = cardsInfos[i];
+                    };
+                };
+
+                item["quantity"] = 1;
+
+                cart.push(item);
+            };
+
+            const qnt = document.querySelector(".qnt");
+
+            let count = 0;
+
+            for(let i = 0; i < cart.length; i++) {
+
+               count += cart[i].quantity;
+            };
+
+            qnt.innerText = count;
+
+            const prize = document.querySelector(".prize");
+
+            let totalPrize = 0;
+
+            for(let i = 0; i < cart.length; i++) {
+
+               totalPrize += cart[i].quantity * cart[i].preco;
+            };
+
+            prize.innerText = "R$ " + totalPrize + ".00";
+
+            if (count === 1) {
+
+                const hide = document.querySelector("table");
+
+                hide.classList.remove("hide");
+            };
+
+            showInCart(cart);
+        });
     };
 };
 
-addCards(cardsInfo);
+addCards(cardsInfos);
+
+function showInCart(a) {
+    
+    cartInner.innerHTML = "";
+
+    for(let i = 0; i < a.length; i++) {
+
+        const product = a[i];
+
+        const card = document.createElement("div");
+
+        card.classList.add("productList");
+
+        card.setAttribute("id", product.id)
+
+        const figure = document.createElement("figure");
+
+        card.appendChild(figure);
+
+        const img = document.createElement("img");
+
+        img.src = product.imgSrc;
+
+        figure.appendChild(img);
+
+        const h3 = document.createElement("h3");
+
+        h3.innerText = product.nome;
+
+        card.appendChild(h3);
+
+        const div = document.createElement("div");
+
+        div.classList.add("preco");
+
+        card.appendChild(div);
+
+        const p = document.createElement("p");
+        
+        p.innerText = "R$ " + product.preco + ".00";
+        
+        div.appendChild(p);
+
+        const quantity = document.createElement("div");
+
+        quantity.classList.add("quantity");
+
+        div.appendChild(quantity);
+        
+        const removeButton = document.createElement("button");
+
+        removeButton.classList.add("remove");
+
+        removeButton.innerText = "-";
+
+        removeButton.addEventListener("click", (e) => {
+
+            for(let i = 0; i < cart.length; i++) {
+
+                if (Number(e.path[3].id) === cart[i].id) {
+        
+                    if(cart[i].quantity > 1) {
+        
+                        cart[i].quantity--;
+        
+                    } else {
+        
+                        cart.splice(i, 1);
+                    };
+                };
+            };
+
+            const qnt = document.querySelector(".qnt");
+
+            let count = 0;
+
+            for(let i = 0; i < cart.length; i++) {
+
+               count += cart[i].quantity;
+            };
+
+            qnt.innerText = count;
+
+            const prize = document.querySelector(".prize");
+
+            let totalPrize = 0;
+
+            for(let i = 0; i < cart.length; i++) {
+
+               totalPrize += cart[i].quantity * cart[i].preco;
+            };
+
+            prize.innerText = "R$ " + totalPrize + ".00";
+
+            if(cart.length === 0) {
+        
+                cartInner.innerHTML = `<h3 class="emptyH3">Carrinho Vazio<h3><span class="emptySpan">Adicione produtos</span>`;
+
+                const hide = document.querySelector("table");
+
+                hide.classList.add("hide");
+
+            } else {
+        
+                showInCart(cart);
+            };            
+        })
+
+        quantity.appendChild(removeButton)
+
+        const span = document.createElement("span");
+        
+        span.innerText = product.quantity;
+        
+        quantity.appendChild(span);
+
+        const addButton = document.createElement("button");
+
+        addButton.classList.add("add");
+
+        addButton.innerText = "+";
+
+        addButton.addEventListener("click", (e) => {
+
+            for(let i = 0; i < cart.length; i++) {
+                
+                if (cart[i].id === Number(e.path[3].id)) {
+
+                    cart[i].quantity++;
+                };
+            };
+
+            const qnt = document.querySelector(".qnt");
+
+            let count = 0;
+
+            for(let i = 0; i < cart.length; i++) {
+
+               count += cart[i].quantity;
+            };
+
+            qnt.innerText = count;
+
+            const prize = document.querySelector(".prize");
+
+            let totalPrize = 0;
+
+            for(let i = 0; i < cart.length; i++) {
+
+               totalPrize += cart[i].quantity * cart[i].preco;
+            };
+
+            prize.innerText = "R$ " + totalPrize + ".00";
+
+            showInCart(cart);
+        });
+
+        quantity.appendChild(addButton);
+
+        cartInner.appendChild(card);
+    };
+};
+
+const filters = ["Todos", "Acessórios", "Calçados", "Camisetas"];
+
+for (let i = 0; i < filters.length; i++) {
+
+    const ul = document.querySelector("ul");
+
+    const li = document.createElement("li");
+
+    ul.appendChild(li);
+
+    const button = document.createElement("button");
+
+    button.innerText = filters[i];
+
+    button.classList.add(filters[i]);
+
+    li.appendChild(button);
+
+    button.addEventListener("click", (e) => {
+
+        if (e.path[0].className === "Calçados") {
+
+            alert("Desculpe, calçados fora de estoque.\nVeja nossas outras ofertas :)");
+
+        } else {
+
+            const filter = [];
+
+            for(let i = 0; i < cardsInfos.length; i++) {
+    
+                if (cardsInfos[i].button === e.path[0].className) {
+    
+                    filter.push(cardsInfos[i]);
+    
+                };
+            };
+    
+            if (filter.length === 0) {
+
+                const li = document.querySelectorAll("li");
+
+                for(let i = 0; i < li.length; i++) {
+
+                    if(li[i].outerText !== e.path[0].className) {
+
+                        const actualFilter = document.querySelector(`.${li[i].outerText}`);
+
+                        actualFilter.style.fontWeight = "normal";
+
+                        actualFilter.style.color = "#828282";
+                    };
+                }; 
+
+                const todos = document.querySelector(".Todos");
+
+                todos.style.fontWeight = "bold";
+
+                todos.style.color = "#333333";
+                    
+                cardsBox.innerHTML = "";
+                
+                addCards(cardsInfos);
+            
+            } else {
+
+                const li = document.querySelectorAll("li");
+                
+                for(let i = 0; i < li.length; i++) {
+
+                    if(li[i].outerText !== e.path[0].className) {
+
+                        const actualFilter = document.querySelector(`.${li[i].outerText}`);
+
+                        actualFilter.style.fontWeight = "normal";
+
+                        actualFilter.style.color = "#828282";
+                    };
+                };                
+
+                const currentFilter = document.querySelector(`.${e.path[0].className}`);
+
+                currentFilter.style.fontWeight = "bold";
+
+                currentFilter.style.color = "#333333";
+
+    
+                cardsBox.innerHTML = "";
+                
+                addCards(filter);
+            };
+        };
+    });
+};
+
+const input = document.querySelector("input");
+
+const searchButton = document.querySelector("#searchButton");
+
+searchButton.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    const li = document.querySelectorAll("li");
+                
+    for(let i = 0; i < li.length; i++) {
+
+        const actualFilter = document.querySelector(`.${li[i].outerText}`);
+
+        actualFilter.style.fontWeight = "normal";
+
+        actualFilter.style.color = "#828282";
+    };
+
+    let toSearch = input.value;
+
+    const toShow = [];
+
+    for(let i = 0; i < cardsInfos.length; i++) {
+
+        if(toSearch === cardsInfos[i].nome) {
+
+            toShow.push(cardsInfos[i]);
+        };
+    };
+
+    if (toShow.length === 0) {
+
+        cardsBox.innerHTML = ""; 
+
+        cardsBox.innerHTML = "Nenhum produto com esse nome encontrado...\nTente novamente."
+    
+    } else {
+
+        cardsBox.innerHTML = "";
+
+        addCards(toShow);
+    }
+})

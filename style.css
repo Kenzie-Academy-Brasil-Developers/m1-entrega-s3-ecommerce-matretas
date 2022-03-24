@@ -27,15 +27,16 @@ figcaption {
 }
 
 .topo {
-    height: 100px;
+    height: 70px;
+    background: #F5F5F5;
 }
 
 .topo .conteudo {
-    background: #F5F5F5;
-    height: 50px;
+    height: 100%;
     padding: 0 75px;
     display: flex;
     justify-content: space-between;
+    align-content: center;
     flex-flow: wrap;
     align-items: center;
     
@@ -43,42 +44,47 @@ figcaption {
 
 .topo .conteudo h1 {
     font-size: 24px;
+    margin: 0;
 }
 
 .topo .conteudo nav ul li {
     display: inline-block;
-    margin: 0 auto;
-    padding: 0 8px;
+    margin: 0 0;
+    padding: 0 0;
 }
 
-.topo .conteudo nav ul li a {
-    text-decoration: none;
-    font-size: 14px;
+.topo .conteudo nav ul li button {
+    font-size: 16px;
     color: #828282;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
-.topo .conteudo nav ul li #todos {
+.topo .conteudo nav ul li .Todos {
+
+    font-weight: bold;
     color: #333333;
 }
 
-.topo .conteudo nav ul li a:hover {
+.topo .conteudo nav ul li button:hover {
     color: #333333;
 }
 
 .principal .sectionBox {
     display: flex;
-    margin: 20px 75px;
-    justify-content: space-between;
+    margin: 20px 50px;
+    justify-content: space-evenly;
     flex-flow: wrap;
     
 }
 
 .principal .sectionBox .cardsBox {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-content: center;
     flex-wrap: wrap;
-    width: 780px;
+    width: 800px;
     height: 60%;
     background: transparent;
 }
@@ -118,7 +124,6 @@ figcaption {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* align-content:flex-start */
     padding-left: 12px;
 }
 
@@ -149,18 +154,21 @@ figcaption {
     color:#2E245E;
 }
 
-.principal .sectionBox .cardsBox .cards .cardBody span a {
-    font-weight: normal;
+.principal .sectionBox .cardsBox .cards .cardBody .addToCart {
+    width: 150px;
+    background: transparent;
     color: #828282;
     font-size: 14px;
+    text-decoration: underline;
+    padding-left: 0;
 }
 
-.principal .sectionBox .cardsBox .cards .cardBody span a:hover {
+.principal .sectionBox .cardsBox .cards .cardBody .addToCart:hover {
     color: #6B54DE;
 }
 
 .principal .sectionBox .cartBox {
-    width: 325px;
+    width: 370px;
     height: 40%;
     background: transparent;
     
@@ -185,7 +193,7 @@ figcaption {
     font-size: 95%;
 }
 
-.principal .sectionBox .cartBox .cartBody .rectangle {
+.principal .sectionBox .cartBox .cartBody .cartHeader{
     width: 100%;
     height: 40px;
     color: #fff;
@@ -194,7 +202,7 @@ figcaption {
     align-items: center;
     background: #6B54DE;
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: lighter;
 }
 
@@ -203,17 +211,143 @@ figcaption {
     height: 320px;
     background: #F5F5F5;
     display: flex;
-    flex-direction: column;
+    flex-flow: wrap;
     justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    overflow-y: auto;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList {
+    width: 100%;
+    height: 32%;
+    background: transparent;
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: column wrap;
+    border: 1px solid transparent;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList:hover {
+    border: 1px solid #333333;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList figure {
+    width: 35%;
+    height: 80%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    margin: 3% 3% 3% 3%;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList figure img {
+    height: 100%;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList h3 {
+    font-size:16px;
+    color: #333333;
+    width: 58%;
+    height: 40%;
+    margin: 0 0;
+    display: flex;
+    flex-flow: wrap;
     align-items: center;
 }
 
-.principal .sectionBox .cartBox .cartBody .cartInner h3 {
+.principal .sectionBox .cartBox .cartBody .cartInner .productList .preco {
+    width: 59%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList .preco p {
+    color: #2E245E;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList .preco .quantity {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px 0 0;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList .preco .quantity span {
+    display: flex;
+    justify-content: center;
+    width: 37%;
+    height: 100%;
+    color: #2E245E;;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList .preco .quantity button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    height: 100%; 
+    width: 37%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList .preco .quantity .add {
+    background: green;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .productList .preco .quantity .remove {
+    background: red;
+}
+
+.principal .sectionBox .cartBox .cartBody .cartInner .emptyH3 {
+    margin-top: 120px;
     font-size: 22px;
     color: #333333;
 }
 
-.principal .sectionBox .cartBox .cartBody .cartInner span {
-    font-size: 14px;
+.principal .sectionBox .cartBox .cartBody .cartInner .emptySpan {
+    font-size: 16px;
+    color: #828282;
+    margin: 0 45px 0 45px;
+    font-weight: normal;
+    
+}
+
+.principal .sectionBox .cartBox table {
+    width: 100%;
+    height: 120px;
+    background: #333333;
     color: #828282;
 }
+
+.principal .sectionBox .cartBox table th {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 16px;
+    font-weight: normal;
+    color: #fff;
+}
+
+.principal .sectionBox .cartBox table td {
+    width: 30%;
+    text-align: end;
+    padding-right: 16px;
+}
+
+.hide {
+    display: none;
+}
+
+
