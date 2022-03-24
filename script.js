@@ -46,6 +46,47 @@ function addCards(a) {
 
         button.innerText = a[i].button;
 
+        button.addEventListener("click", (e) => {
+
+            console.log(e.path[0].outerText);
+
+            const navFilter = document.querySelector(`.${e.path[0].outerText}`);
+
+            const li = document.querySelectorAll("li");
+
+            for(let i = 0; i < li.length; i++) {
+
+                const filter = document.querySelector(`.${li[i].outerText}`);
+
+                if(e.path[0].outerText === li[i].outerText) {
+
+                    filter.style.fontWeight = "bold"
+
+                    filter.style.color = "#333333";
+
+                } else {
+
+                    filter.style.fontWeight = "normal";
+
+                    filter.style.color = "#828282";
+                };
+            };
+
+            const items = [];
+
+            for(let i = 0; i < cardsInfos.length; i++) {
+
+                if (cardsInfos[i].button === e.path[0].outerText) {
+
+                    items.push(cardsInfos[i]);
+                };
+            };
+
+            cardsBox.innerHTML = "";
+            
+            addCards(items);
+        })
+
         article.appendChild(button);
 
         const h3 = document.createElement("h3");
