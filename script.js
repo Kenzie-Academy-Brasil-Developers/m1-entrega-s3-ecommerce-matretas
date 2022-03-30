@@ -307,6 +307,10 @@ function showInCart(a) {
 
         addButton.addEventListener("click", (e) => {
 
+            console.log(e);
+
+            console.log(e.path[3]);
+
             for(let i = 0; i < cart.length; i++) {
                 
                 if (cart[i].id === Number(e.path[3].id)) {
@@ -465,7 +469,9 @@ searchButton.addEventListener("click", (e) => {
 
     for(let i = 0; i < cardsInfos.length; i++) {
 
-        if(toSearch === cardsInfos[i].nome) {
+        const found = cardsInfos[i].nome.toLowerCase().split(toSearch.toLowerCase());
+
+        if(found.length > 1) {
 
             toShow.push(cardsInfos[i]);
         };
@@ -482,5 +488,6 @@ searchButton.addEventListener("click", (e) => {
         cardsBox.innerHTML = "";
 
         addCards(toShow);
-    }
-})
+        input.value = "";
+    };
+});
